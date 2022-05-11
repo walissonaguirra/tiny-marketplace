@@ -43,6 +43,13 @@
                 flex: 1 1 1 1;
                 gap: 30px;
             }
+
+            .products-image {
+                width: 260px;
+                height: 220px;
+                object-fit: cover;
+                border: 2px solid var(--color);
+            }
         </style>
     </head>
     <body>

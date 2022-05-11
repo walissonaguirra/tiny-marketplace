@@ -1,7 +1,7 @@
 @props(['product', 'cellphone', 'pay' => false])
 
 <div>
-    <img src="{{ $product->image }}"/>
+    <img class="products-image" src="{{ $product->image }}"/>
 
     <div>{{ $product->title }}</div>
 
