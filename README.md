@@ -1,64 +1,82 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1 align="center">🛒 Tiny Marketplace</h1>
+<h3 align="center">Mini sistema para venda de produtos usando whatsapp.</h3>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Print Screen Tiny Marketplace](docs/screen-tiny-marketplace.gif)
 
-## About Laravel
+## Sobre o projeto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este é um sistema de marketplace simples, a ideia é que qualquer pessoa possa ter sua página de venda na internet com zero configuração, você pode anuncia desde livros usado á qualquer tipo de produto e recebe sua solicitação de compra no whatsapp. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Fique avontade para clonar este repositório e analisa minhas implementação, **É compartilhado conhecimento que se aprende**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<p align="right">(<a href="#readme">volta ao topo</a>)</p>
 
-## Learning Laravel
+## Construído com
+- Laravel 8
+- Pico Framework CSS
+- PHP 7.4
+- Blade Template
+- Laravel Breeze
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<p align="right">(<a href="#readme">volta ao topo</a>)</p>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Guia de instalação
+1. Para começar você pode clonar esta projeto na sua máquina local usando o comando abaixo
+```sh
+git clone https://github.com/walissonaguirra/tiny-marketplace.git
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+2. Este projeto foi contruido com _SQLite 3_, mas você pode muda o isso alterando as configuração no `.env`, [Mais informação](https://laravel.com/docs/8.x/database#introduction)
 
-### Premium Partners
+Crie um arquivo .sqlite local (este sera nosso bando de dados) usando o comando abaixo
+```sh
+touch database/database.sqlite
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+3. Estamos quase-lá, renomeie o arquivo `.env.example` para `.env`, aqui você pode alterar as variáveis de ambiente
 
-## Contributing
+4. Instala as dependências do projeto usando o comando
+```sh
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. Executar as migrations para criar bando de dados usando o comando
+```sh
+php artisan migrate
+```
 
-## Code of Conduct
+6. Inicie o servido local (Recomendado)
+```sh
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+🎉 **Pronto!!!** você já pode acessar _http://127.0.0.1:8000_ e ver o projeto funcionando
 
-## Security Vulnerabilities
+<p align="right">(<a href="#readme">volta ao topo</a>)</p>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Estrutura de banco de dados
+
+A tabela de usuário tem o relacinamento de `1:N` com a tabela de produtos. Exemplo, um usuário pode ter varias produtos `1:N` e cada produto só pode pertence a um usuário
+
+Caso o usuário decita apagar a sua conta todos os produtos relacionados a ele são apagado junto. este processo e gerenciado pelo proprio bando de dados `onDelete('CASCADE')`
+
+**DER** (Diagrama Entidade-Relacionamento)
+
+![Diagrama Entidade-Relacionamento](docs/DER_SQLite.png)
+
+<p align="right">(<a href="#readme">volta ao topo</a>)</p>
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+O Tiny Marketplace é um software de código aberto licenciado sob a [MIT license](https://opensource.org/licenses/MIT).
+
+<p align="right">(<a href="#readme">volta ao topo</a>)</p>
+
+## Contato
+
+<a href="mailto:walisson.aguirra@gmail.com"><img src="https://img.shields.io/badge/walisson.aguirra@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
+<a href="https://wa.me/5594984278097"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
+<a href="https://www.linkedin.com/in/walissonaguirra"><img src="https://img.shields.io/badge/Walisson%20Aguirra-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+
+<p align="right">(<a href="#readme">volta ao topo</a>)</p>
